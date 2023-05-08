@@ -20,6 +20,13 @@ Ini adalah bentuk limbah medis yang sangat berbahaya yang bersifat karsinogenik,
 
 
 ### Cara Mengolah :
+<!-- 1. Mengumpulkan masker bekas pakai
+2. Lakukan disinfeksi pada masker bekas
+3. Gunting dan ubah bentuk masker, tujuannya agar tidak ada pihak nakal yang mendaur ulang masker bekas pakai menjadi masker kembali
+4. Bungkus rapat dengan plastik
+5. Buang ke tempat sampah domestik
+6. Cuci tangan menggunakan sabun dan air mengalir -->
+
 1. Sampah umum seperti tisu, kapas dan bahan yang tidak terkena limbah infeksius digabung dengan sampah biasa untuk dibuang.
 2. Benda tajam harus digabung, terlepas apakah terkontaminasi atau tidak, dan harus dimasukkan ke wadah anti bocor (biasanya terbuat dari logam atau plastik berkepadatan tinggi dan tidak tembus)
 3. Kantung dan wadah untuk limbah infeksius harus ditandai dengan lambang atau tulisan zat infeksius.
@@ -31,3 +38,8 @@ Ini adalah bentuk limbah medis yang sangat berbahaya yang bersifat karsinogenik,
 9. Limbah dengan kandungan logam berat yang tinggi (misalnya kadmium atau merkuri) harus dikumpulkan secara terpisah.
 10. Wadah aerosol dapat dikumpulkan dengan limbah layanan kesehatan umum.
 11. Limbah infeksius radioaktif tingkat rendah Apusan, jarum suntik untuk penggunaan diagnostik atau terapeutik) dapat dikumpulkan dalam kantong atau wadah kuning untuk limbah infeksius jika ini ditujukan untuk pembakaran
+
+### Sumber
+https://tirto.id/apa-itu-limbah-medis-dan-bagaimana-cara-menanganinya-ei2F
+
+<!-- https://envihsa.fkm.ui.ac.id/2022/10/25/pengolahan-limbah-medis-pada-masa-pandemi/#:~:text=Berikut%20adalah%20langkah-langkah%20yang%20bisa%20kita%20lakukan%20di,6%20Cuci%20tangan%20menggunakan%20sabun%20dan%20air%20mengalir -->
