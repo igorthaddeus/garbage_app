@@ -12,7 +12,6 @@ from model import CustomMobilenetV2
 import io
 from torchvision.transforms.functional import to_pil_image
 
-
 # Read File
 def get_file_content_as_string(path_1):
     path = os.path.dirname(__file__)
@@ -149,6 +148,11 @@ def page_2():
                         st.markdown(f"<h2 style='text-align: center; color: black;'>{category}</h2>", unsafe_allow_html=True)
                         # st.success(category)
                         st.text("Test")
+
+                    # if category == 'mountains':
+                    #     st.markdown(f"<h2 style='text-align: center; color: black;'>{category}</h2>", unsafe_allow_html=True)
+                        # st.success(category)
+                        # st.text("Test")
 
             except Exception as e:
                 st.error('Please upload an image in jpg or png format..!')
