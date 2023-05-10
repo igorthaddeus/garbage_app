@@ -154,6 +154,11 @@ def page_2():
                         # st.success(category)
                         # st.text("Test")
 
+                    # if category == 'mountains':
+                    #     st.markdown(f"<h2 style='text-align: center; color: black;'>{category}</h2>", unsafe_allow_html=True)
+                        # st.success(category)
+                        # st.text("Test")
+
             except Exception as e:
                 st.error('Please upload an image in jpg or png format..!')
                 # st.error(f'Error: {e}')
