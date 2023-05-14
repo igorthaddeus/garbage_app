@@ -144,15 +144,15 @@ def page_2():
 
                     # st.success(f'Predicted category: {category}')
 
-                    if category == 'mountains':
+                    if category == 'fruit':
                         st.markdown(f"<h2 style='text-align: center; color: black;'>{category}</h2>", unsafe_allow_html=True)
                         # st.success(category)
                         st.text("Test")
 
-                    # if category == 'mountains':
-                    #     st.markdown(f"<h2 style='text-align: center; color: black;'>{category}</h2>", unsafe_allow_html=True)
-                        # st.success(category)
-                        # st.text("Test")
+                    if category == 'meat':
+                        st.markdown(f"<h2 style='text-align: center; color: black;'>{category}</h2>", unsafe_allow_html=True)
+                        st.success(category)
+                        st.text("Test")
 
                     # if category == 'mountains':
                     #     st.markdown(f"<h2 style='text-align: center; color: black;'>{category}</h2>", unsafe_allow_html=True)
@@ -197,8 +197,6 @@ def page_3():
     )
 
     readme_text = st.markdown(get_file_content_as_string('./notepad/about.md'), unsafe_allow_html=True)
-
-
 
 def page_4():
     readme_text = st.markdown(get_file_content_as_string('./notepad/menu_help.md'), unsafe_allow_html=True)
