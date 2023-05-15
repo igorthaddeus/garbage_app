@@ -1,3 +1,5 @@
+
+
 ## Sayur
 Sampah jenis ini merupakan limbah organik yang berasal dari sisa-sisa sayuran yang tidak dapat dimanfaatkan lagi, seperti daun atau batang sayur yang telah layu atau busuk. Sampah sayur dapat diolah menjadi pupuk organik yang berguna untuk meningkatkan kesuburan tanah dan pertumbuhan tanaman.
 

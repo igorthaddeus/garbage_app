@@ -1,3 +1,5 @@
+
+
 ## Daging 
 Industri daging adalah salah satu penghasil limbah organik terbesar di sektor pengolahan makanan dan menjadi perantara antara produksi ternak dan produk yang aman secara higienis untuk digunakan dalam penyiapan makanan bagi manusia dan hewan.
 

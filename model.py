@@ -1,24 +1,26 @@
 import torch
 from torch import nn, optim
-from torchvision.models import mobilenet_v2
+from torchvision.models import mobilenet_v2, resnet50
 
-class CustomMobilenetV2(nn.Module):
-  def __init__(self, output_size):
-    super().__init__()
-    self.mnet = mobilenet_v2(pretrained=True)
-    self.freeze()
-    self.mnet.classifier = nn.Sequential(    
-        nn.Linear(1280, 5),
-        nn.Sigmoid()
-    )
+class ResNet50(nn.Module):
+    def __init__(self, output_size):
+        super().__init__()
+        self.rnet = resnet50(pretrained=True)
+        self.freeze()
+        self.rnet.fc = nn.Sequential(    
+            nn.Linear(2048, output_size),
+            # nn.ReLU(),
+            # nn.Linear(512, output_size),
+            nn.LogSoftmax(dim=1)
+        )
 
-  def forward(self, x):
-    return self.mnet(x)
+    def forward(self, x):
+        return self.rnet(x)
 
-  def freeze(self):
-    for param in self.mnet.parameters():
-      param.requires_grad = False
+    def freeze(self):
+        for param in self.rnet.parameters():
+            param.requires_grad = False
 
-  def unfreeze(self):
-    for param in self.mnet.parameters():
-      param.requires_grad = True
+    def unfreeze(self):
+        for param in self.rnet.parameters():
+            param.requires_grad = True

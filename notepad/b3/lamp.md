@@ -1,4 +1,6 @@
-## Lampu
+
+
+### Lampu
 Lampu adalah jenis sampah yang berasal dari lampu yang sudah tidak terpakai lagi. Sampah ini mengandung merkuri yang berbahaya bagi lingkungan dan kesehatan manusia.
 
 Ada beberapa jenis bola lampu dan tergantung pada jenisnya:

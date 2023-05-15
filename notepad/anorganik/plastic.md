@@ -1,4 +1,6 @@
-## Plastik
+
+
+### Plastik
 Sampah jenis ini terdiri dari plastik yang berasal dari berbagai macam produk seperti kemasan makanan, botol minuman, dan mainan anak-anak. Plastik sulit untuk didaur ulang karena tidak dapat terurai secara alami di lingkungan.
 
 ### Cara Mengolah

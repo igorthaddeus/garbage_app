@@ -1,3 +1,5 @@
+
+
 ## Nasi
 Sampah jenis ini merupakan limbah organik yang berasal dari sisa-sisa nasi yang tidak dapat dimanfaatkan lagi, seperti nasi yang telah basi atau mengalami kerusakan akibat proses pengolahan dan penyimpanan yang tidak tepat. 
 

@@ -8,7 +8,7 @@ from PIL import Image, ImageOps
 from streamlit_option_menu import option_menu
 from torchvision import transforms
 from torchvision.models import mobilenet_v2
-from model import CustomMobilenetV2
+from model import ResNet50
 import io
 from torchvision.transforms.functional import to_pil_image
 
@@ -42,20 +42,28 @@ def home():
                     </div>
                 </div>""", unsafe_allow_html=True)
     
-    readme_text = st.markdown(get_file_content_as_string('./notepad/Instructions.md'), unsafe_allow_html=True)
+    # readme_text = st.markdown(get_file_content_as_string('./notepad/Instructions.md'), unsafe_allow_html=True)
+
+    with open('./notepad/Instructions.md', 'r') as file:
+        readme_text = file.read()
+
+    readme_html = f"<div style='text-align: justify'>{readme_text}</div>"
+    readme_markdown = st.markdown(readme_html, unsafe_allow_html=True)
 
 
 device = torch.device('cpu')
 
 def load_model():
-    model = CustomMobilenetV2(5).to(device)
-    weights = torch.load('model/weights_best.pth', map_location=device)
+    model = ResNet50(13).to(device)
+    weights = torch.load('model/resnet50-state_dict.pth', map_location=device)
     model.load_state_dict(weights)
     model.eval()
     return model 
 
 model = load_model()
-label2cat  = ['desert', 'mountains', 'sea', 'sunset', 'trees']
+label2cat  = ['battery', 'cigarattes', 'clothes', 'fruits', 
+              'glass', 'lamp', 'meat', 'medical waste', 
+              'metal', 'paper', 'plastic', 'rice', 'vegetables']
 
 def predict_image(image_path):
     # image_path = Image.open(image_path)
@@ -68,9 +76,8 @@ def predict_image(image_path):
     image_tensor = transform(image_path)
     image_tensor = image_tensor.unsqueeze(0).to(device)
 
-    # Make prediction
+    model.eval()  
     with torch.no_grad():
-        model.eval()
         output = model(image_tensor)
     prob = torch.softmax(output, dim=1)
     pred_class_idx = prob.argmax(dim=1)
@@ -107,16 +114,94 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
+def content(category):
+    category_content_maps = {
+        'fruits': {
+            'content': './notepad/organik/fruits.md',
+            'tipe': 'Organik',
+            'unsafe_allow_html': True
+        },
+        'meat': {
+            'content': './notepad/organik/meat.md',
+            'tipe': 'Organik',
+            'unsafe_allow_html': True,
+        },
+        'paper': {
+            'content': './notepad/organik/paper.md',
+            'tipe': 'Organik',
+            'unsafe_allow_html': True,
+        },
+        'rice': {
+            'content': './notepad/organik/rice.md',
+            'tipe': 'Organik',
+            'unsafe_allow_html': True,
+        },
+        'vegetables': {
+            'content': './notepad/organik/vegetables.md',
+            'tipe': 'Anorganik',
+            'unsafe_allow_html': True,
+        },
+        'clothes': {
+            'content': './notepad/anorganik/clothes.md',
+            'tipe': 'Anorganik',
+            'unsafe_allow_html': True,
+        },
+        'glass': {
+            'content': './notepad/anorganik/glass.md',
+            'tipe': 'Anorganik',
+            'unsafe_allow_html': True,
+        },
+        'metal': {
+            'content': './notepad/anorganik/metal.md',
+            'tipe': 'Anorganik',
+            'unsafe_allow_html': True,
+        },
+        'plastic': {
+            'content': './notepad/anorganik/plastic.md',
+            'tipe': 'Anorganik',
+            'unsafe_allow_html': True,
+        },
+        'battery': {
+            'content': './notepad/b3/battery.md',
+            'tipe': 'B3',
+            'unsafe_allow_html': True,
+        },
+        'cigarattes': {
+            'content': './notepad/b3/cigarattes.md',
+            'tipe': 'B3',
+            'unsafe_allow_html': True,
+        },
+        'lamp': {
+            'content': './notepad/b3/lamp.md',
+            'tipe': 'B3',
+            'unsafe_allow_html': True,
+        },
+        'medical_waste': {
+            'content': './notepad/b3/medical_waste.md',
+            'tipe': 'B3',
+            'unsafe_allow_html': True,
+        },
+    }
+
+    content = category_content_maps[category]
+    # markdown = st.markdown(f"<h2 style='text-align: center; color: black;'>{category}</h2>", unsafe_allow_html=True)
+    st.markdown(
+        f'<div style="display: flex; margin-top: 23px;justify-content: center;"><span style="background-color: green; color: white; padding: 10px 20px;">{category}: {content["tipe"]}</span></div>',
+        unsafe_allow_html=True
+    )
+    # st.success(f'{category}, {content["tipe"]}')
+
+    with open(content['content'], 'r') as file:
+        readme_text = file.read()
+
+    readme_html = f"""<div style='text-align: justify'>{readme_text}</div>"""
+    st.markdown(readme_html, unsafe_allow_html=True)
+
 # Define page 2
 def page_2():
-
-    
     st.write('''# Garbage Classification''')
 
     st.set_option('deprecation.showfileUploaderEncoding', False)
-
-    # if 'global_image_list' not in st.session_state:
-    #     st.session_state.global_image_list=[]
 
     st.markdown('### Choose your preferred method')
     option = st.radio('### Choose your option', ['Upload a image', 'Take a photo'])
@@ -124,11 +209,11 @@ def page_2():
 
     if option == 'Upload a image':
         uploaded_file = st.file_uploader('Choose an image')
-   
+        category = ''
         if uploaded_file is not None:
             try:
-                col1,col2 = st.columns([1,1])
-                
+                col1, col2 = st.columns([1,1])
+
                 with col1:
                     image = Image.open(uploaded_file).convert('RGB')
                     st.image(image, width=300)
@@ -138,35 +223,15 @@ def page_2():
                     st.warning('To get a classify result, press the Classify buttton!')
                     st.write('-'*3)
 
+                    if st.button('Classify'): 
+                        category = predict_image(image)
 
-                if st.button('Classify'): 
-                    category = predict_image(image)
-
-                    # st.success(f'Predicted category: {category}')
-
-                    if category == 'fruit':
-                        st.markdown(f"<h2 style='text-align: center; color: black;'>{category}</h2>", unsafe_allow_html=True)
-                        # st.success(category)
-                        st.text("Test")
-
-                    if category == 'meat':
-                        st.markdown(f"<h2 style='text-align: center; color: black;'>{category}</h2>", unsafe_allow_html=True)
-                        st.success(category)
-                        st.text("Test")
-
-                    # if category == 'mountains':
-                    #     st.markdown(f"<h2 style='text-align: center; color: black;'>{category}</h2>", unsafe_allow_html=True)
-                        # st.success(category)
-                        # st.text("Test")
-
-                    # if category == 'mountains':
-                    #     st.markdown(f"<h2 style='text-align: center; color: black;'>{category}</h2>", unsafe_allow_html=True)
-                        # st.success(category)
-                        # st.text("Test")
-
+                if len(category) > 0:
+                    content(category)
+                    
             except Exception as e:
                 st.error('Please upload an image in jpg or png format..!')
-                # st.error(f'Error: {e}')
+                st.error(f'Error: {e}')
         else:
             st.info('Input image')
 
@@ -174,7 +239,6 @@ def page_2():
         picture = st.camera_input("Take a picture")
 
         if picture:
-            # To read image file buffer as a 3D uint8 tensor with PyTorch:
             bytes_data = picture.getvalue()
             torch_img = torch.ops.image.decode_image(
                 torch.from_numpy(np.frombuffer(bytes_data, np.uint8)), 3
@@ -182,6 +246,7 @@ def page_2():
             pil_image = to_pil_image(torch_img)
             category = predict_image(pil_image)
             st.success(f'Predicted category: {category}')
+            content(category)
 
 # Define page 3
 def page_3():

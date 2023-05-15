@@ -1,4 +1,6 @@
-## Pakaian
+
+
+### Pakaian
 Sampah jenis ini terdiri dari pakaian yang sudah tidak terpakai lagi. Pakaian termasuk dalam kategori sampah anorganik yang sulit terurai oleh alam. Sampah pakaian dapat merusak lingkungan melalui berbagai cara. Mulai dari warna-warna cerah yang digunakan, bahan kain yang banyak tersisa, sampai dengan gas buang hasil produksi yang mencemari udara. Seperti halnya zat pewarna dari industri fast fashion yang beredar dengan harga murah, diketahui bahwa bahan pewarna pakaian adalah pewarna tekstil yang cukup berbahaya bagi lingkungan dan kesehatan manusia. 
 
 ### Cara Mengolah :
