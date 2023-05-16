@@ -181,6 +181,11 @@ def content(category):
             'tipe': 'B3',
             'unsafe_allow_html': True,
         },
+        # 'medical_waste': {
+        #     'content': './notepad/b3/medical_waste.md',
+        #     'tipe': 'B3',
+        #     'unsafe_allow_html': True,
+        # },
     }
 
     content = category_content_maps[category]
