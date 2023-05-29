@@ -1,6 +1,7 @@
 
 
-### Pakaian
+### Limbah medis 
+
 Limbah medis merupakan jenis sampah yang dihasilkan dari aktivitas pelayanan kesehatan, termasuk rumah sakit, klinik, laboratorium, dan praktik medis lainnya. Limbah medis dapat berupa bahan kimia berbahaya, bahan beracun, dan limbah infeksius seperti jarum suntik, sarung tangan, alat-alat bedah, dan bahan bekas medis lainnya.
 
 Jenis Limbah Medis:

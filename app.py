@@ -138,7 +138,7 @@ def content(category):
         },
         'vegetables': {
             'content': './notepad/organik/vegetables.md',
-            'tipe': 'Anorganik',
+            'tipe': 'Organik',
             'unsafe_allow_html': True,
         },
         'clothes': {
