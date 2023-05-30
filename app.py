@@ -55,7 +55,9 @@ device = torch.device('cpu')
 
 def load_model():
     model = ResNet50(13).to(device)
-    weights = torch.load('model/resnet50-state_dict.pth', map_location=device)
+    # weights = torch.load('model/resnet50-state_dict.pth', map_location=device)
+    weights = torch.load('model/resnet50_v2.pth', map_location=device)
+    
     model.load_state_dict(weights)
     model.eval()
     return model 
@@ -258,13 +260,13 @@ def page_3():
     st.write('''# About''')
     st.text('')
 
-    with open("./image/yuuki yoda.png", "rb") as image_file:
-        encoded_string = base64.b64encode(image_file.read()).decode('utf-8')
+    # with open("./image/yuuki yoda.png", "rb") as image_file:
+    #     encoded_string = base64.b64encode(image_file.read()).decode('utf-8')
 
-    st.markdown(
-        f'<div style="display: flex; justify-content: center;"><img src="data:image/*;base64,{encoded_string}" width="300"/></div>',
-        unsafe_allow_html=True
-    )
+    # st.markdown(
+    #     f'<div style="display: flex; justify-content: center;"><img src="data:image/*;base64,{encoded_string}" width="300"/></div>',
+    #     unsafe_allow_html=True
+    # )
 
     readme_text = st.markdown(get_file_content_as_string('./notepad/about.md'), unsafe_allow_html=True)
 
