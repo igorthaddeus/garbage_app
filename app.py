@@ -32,15 +32,15 @@ def home():
     #     unsafe_allow_html=True
     # )
 
-    with open("./image/go-green.png", "rb") as image_file:
-        encoded_string = base64.b64encode(image_file.read()).decode('utf-8')
+    # with open("./image/go-green.png", "rb") as image_file:
+    #     encoded_string = base64.b64encode(image_file.read()).decode('utf-8')
 
-    st.markdown(f"""
-                <div style="position:relative;">
-                    <div style="display: flex; justify-content: center;">
-                        <img src="data:image/*;base64,{encoded_string}" width="300"/>
-                    </div>
-                </div>""", unsafe_allow_html=True)
+    # st.markdown(f"""
+    #             <div style="position:relative;">
+    #                 <div style="display: flex; justify-content: center;">
+    #                     <img src="data:image/*;base64,{encoded_string}" width="300"/>
+    #                 </div>
+    #             </div>""", unsafe_allow_html=True)
     
     # readme_text = st.markdown(get_file_content_as_string('./notepad/Instructions.md'), unsafe_allow_html=True)
 
@@ -70,10 +70,9 @@ label2cat  = ['battery', 'cigarattes', 'clothes', 'fruits',
 def predict_image(image_path):
     # image_path = Image.open(image_path)
     transform = transforms.Compose([
-        transforms.Resize((224, 224)),
-        transforms.ToTensor(),
-        transforms.Normalize(mean=[0.485, 0.456, 0.406],
-                             std=[0.229, 0.224, 0.225])
+        transforms.Resize((224, 224)),  # Mengubah ukuran gambar menjadi 224x224 piksel
+        transforms.ToTensor(),  # Mengubah gambar menjadi tensor
+        transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])  # Normalisasi tensor
     ])
     image_tensor = transform(image_path)
     image_tensor = image_tensor.unsqueeze(0).to(device)
@@ -183,11 +182,6 @@ def content(category):
             'tipe': 'B3',
             'unsafe_allow_html': True,
         },
-        # 'medical_waste': {
-        #     'content': './notepad/b3/medical_waste.md',
-        #     'tipe': 'B3',
-        #     'unsafe_allow_html': True,
-        # },
     }
 
     content = category_content_maps[category]
@@ -246,14 +240,27 @@ def page_2():
         picture = st.camera_input("Take a picture")
 
         if picture:
-            bytes_data = picture.getvalue()
-            torch_img = torch.ops.image.decode_image(
+           
+        #    category = predict_image(picture)
+        #    st.success(f'Predicted category: {category}')
+        #    content(category)
+           bytes_data = picture.getvalue()
+           torch_img = torch.ops.image.decode_image(
                 torch.from_numpy(np.frombuffer(bytes_data, np.uint8)), 3
             )
-            pil_image = to_pil_image(torch_img)
-            category = predict_image(pil_image)
-            st.success(f'Predicted category: {category}')
-            content(category)
+           pil_image = to_pil_image(torch_img)
+           category = predict_image(pil_image)
+           st.success(f'Predicted category: {category}')
+           content(category)
+
+            # bytes_data = picture.getvalue()
+            # torch_img = torch.ops.image.decode_image(
+            #     torch.from_numpy(np.frombuffer(bytes_data, np.uint8)), 3
+            # )
+            # pil_image = to_pil_image(torch_img)
+            # category = predict_image(pil_image)
+            # st.success(f'Predicted category: {category}')
+            # content(category)
 
 # Define page 3
 def page_3():
