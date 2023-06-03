@@ -1,15 +1,12 @@
 import streamlit as st
-import cv2
 import numpy as np
-import base64
 import os
 import torch
-from PIL import Image, ImageOps
+from PIL import Image
 from streamlit_option_menu import option_menu
 from torchvision import transforms
 from torchvision.models import mobilenet_v2
 from model import ResNet50
-import io
 from torchvision.transforms.functional import to_pil_image
 
 # Read File
