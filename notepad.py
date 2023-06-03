@@ -1,21 +1,21 @@
-def import_and_predict(image_data, model):
-        size = (224,224)    
-        image = ImageOps.fit(image_data, size, Image.ANTIALIAS)
-        image = np.asarray(image)
-        img = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
-        img_resize = (cv2.resize(img, dsize=(75, 75),    interpolation=cv2.INTER_CUBIC))/255.
+# def import_and_predict(image_data, model):
+#         size = (224,224)    
+#         image = ImageOps.fit(image_data, size, Image.ANTIALIAS)
+#         image = np.asarray(image)
+#         img = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+#         img_resize = (cv2.resize(img, dsize=(75, 75),    interpolation=cv2.INTER_CUBIC))/255.
         
-        img_reshape = img[np.newaxis,...]
+#         img_reshape = img[np.newaxis,...]
     
-        prediction = model.predict(img_reshape)
+#         prediction = model.predict(img_reshape)
         
-        return prediction
+#         return prediction
 
-     st.markdown("""
-                    <h1 style='text-align: center; color: grey;'>
-                        Big headline
-                    </h1>""", 
-                    unsafe_allow_html=True)
+#      st.markdown("""
+#                     <h1 style='text-align: center; color: grey;'>
+#                         Big headline
+#                     </h1>""", 
+#                     unsafe_allow_html=True)
 
 # st.write('Help.')
 # # Store the initial value of widgets in session state
@@ -70,11 +70,11 @@ def import_and_predict(image_data, model):
 
 # Set up the navigation links
 
-nav_links = {
-    'Home': '/',
-    'Page 2': '/page-2',
-    'Page 3': '/page-3'
-}
+# nav_links = {
+#     'Home': '/',
+#     'Page 2': '/page-2',
+#     'Page 3': '/page-3'
+# }
 
 # if file is None:
 #         st.text("Please upload an image file")

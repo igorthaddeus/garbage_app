@@ -56,9 +56,12 @@ device = torch.device('cpu')
 def load_model():
     model = ResNet50(13).to(device)
     # weights = torch.load('model/resnet50-state_dict.pth', map_location=device)
-    weights = torch.load('model/resnet50_v2.pth', map_location=device)
-    
+    # weights = torch.load('model/resnet50_v2.pth', map_location=device)
+    weights = torch.load('resnet50_fixed.pth', map_location=device)
+
     model.load_state_dict(weights)
+    # model.load_state_dict(weights, weights=ResNet50_Weights.DEFAULT)
+    
     model.eval()
     return model 
 
