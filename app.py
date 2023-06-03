@@ -274,12 +274,24 @@ def page_3():
     #     f'<div style="display: flex; justify-content: center;"><img src="data:image/*;base64,{encoded_string}" width="300"/></div>',
     #     unsafe_allow_html=True
     # )
+ 
+    with open('./notepad/about.md', 'r') as file:
+        readme_text = file.read()
 
-    readme_text = st.markdown(get_file_content_as_string('./notepad/about.md'), unsafe_allow_html=True)
+    readme_html = f"<div style='text-align: justify'>{readme_text}</div>"
+    readme_markdown = st.markdown(readme_html, unsafe_allow_html=True)
+
+    # readme_text = st.markdown(get_file_content_as_string('./notepad/about.md'), unsafe_allow_html=True)
 
 def page_4():
-    readme_text = st.markdown(get_file_content_as_string('./notepad/menu_help.md'), unsafe_allow_html=True)
-    
+    # readme_text = st.markdown(get_file_content_as_string('./notepad/menu_help.md'), unsafe_allow_html=True)
+
+    with open('./notepad/menu_help.md', 'r') as file:
+        readme_text = file.read()
+
+    readme_html = f"<div style='text-align: justify'>{readme_text}</div>"
+    readme_markdown = st.markdown(readme_html, unsafe_allow_html=True)
+
 
 # Create the app
 def main():
