@@ -27,4 +27,4 @@ Baterai bekas sebaiknya tidak dibuang ke tempat sampah biasa karena bisa merusak
 - Cari lokasi fasilitas pengolahan limbah B3 terdekat.
 
 3. Pengolahan kimia
-Pengolahan limbah baterai bisa dilakukan dengan beberapa metode seperti biometalurgi dan hidrometalurgi1. Biometalurgi adalah pengolahan limbah baterai dengan menggunakan mikroorganisme untuk menghasilkan senyawa yang dapat digunakan kembali1. Sedangkan hidrometalurgi adalah pengolahan limbah baterai dengan menggunakan cairan kimia untuk memisahkan logam dari limbah.
+Pengolahan limbah baterai bisa dilakukan dengan beberapa metode seperti biometalurgi dan hidrometalurgi1. Biometalurgi adalah pengolahan limbah baterai dengan menggunakan mikroorganisme untuk menghasilkan senyawa yang dapat digunakan kembali. Sedangkan hidrometalurgi adalah pengolahan limbah baterai dengan menggunakan cairan kimia untuk memisahkan logam dari limbah.
