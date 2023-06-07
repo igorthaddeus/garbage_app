@@ -54,7 +54,7 @@ def load_model():
     model = ResNet50(13).to(device)
     # weights = torch.load('model/resnet50-state_dict.pth', map_location=device)
     # weights = torch.load('model/resnet50_v2.pth', map_location=device)
-    weights = torch.load('resnet50_fixed.pth', map_location=device)
+    weights = torch.load('resnet50_models_fixed.pth', map_location=device)
 
     model.load_state_dict(weights)
     # model.load_state_dict(weights, weights=ResNet50_Weights.DEFAULT)
@@ -186,10 +186,16 @@ def content(category):
 
     content = category_content_maps[category]
     # markdown = st.markdown(f"<h2 style='text-align: center; color: black;'>{category}</h2>", unsafe_allow_html=True)
+    # st.markdown(
+    #     f'<div style="display: flex; margin-top: 23px;justify-content: center;"><span style="background-color: green; color: white; padding: 10px 50px;">{category}: {content["tipe"]}</span></div>',
+    #     unsafe_allow_html=True
+    # )
     st.markdown(
-        f'<div style="display: flex; margin-top: 23px;justify-content: center;"><span style="background-color: green; color: white; padding: 10px 20px;">{category}: {content["tipe"]}</span></div>',
+        f'<div style="display: flex; margin-top: 23px; justify-content: center;"><span style="background-color: green; color: white; padding: 10px 50px; font-size: 20px;">{category.capitalize()}: {content["tipe"]}</span></div>',
         unsafe_allow_html=True
-    )
+)
+    
+    
     # st.success(f'{category}, {content["tipe"]}')
 
     with open(content['content'], 'r') as file:
