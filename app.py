@@ -5,9 +5,10 @@ import torch
 from PIL import Image
 from streamlit_option_menu import option_menu
 from torchvision import transforms
-from torchvision.models import mobilenet_v2
 from model import ResNet50
 from torchvision.transforms.functional import to_pil_image
+import webbrowser
+
 
 # Read File
 def get_file_content_as_string(path_1):
@@ -299,16 +300,13 @@ def page_4():
     readme_markdown = st.markdown(readme_html, unsafe_allow_html=True)
 
 
-# Create the app
 def main():
-    # st.set_page_config(page_title='Sampah Classification', page_icon=':recycle:')
-    # st.markdown(navbar(nav_links), unsafe_allow_html=True)
     with st.sidebar:
         page = option_menu('Select a page', ['Home', 'Classification', 'About', 'Help'],
                            default_index=0)
-        
     if page == 'Home':
         home()
+ 
     elif page == 'Classification':
         page_2()
     elif page == 'About':
@@ -316,5 +314,10 @@ def main():
     elif page == 'Help':
         page_4()
 
+
 if __name__ == '__main__':
     main()
+
+
+
+
