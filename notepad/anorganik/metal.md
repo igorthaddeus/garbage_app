@@ -13,7 +13,7 @@ Metal merupakan salah satu bahan baku yang paling sering digunakan dalam berbaga
 Berikut adalah beberapa cara untuk mengurangi penggunaan logam:
 - Mendaur ulang barang-barang logam dari rumah tangga Anda daripada membuangnya.
 - Gunakan kembali barang-barang logam daripada membuangnya.
-- Beli produk yang terbuat dari logam daur ulang2.
+- Beli produk yang terbuat dari logam daur ulang.
 
 3. Recycle (Mendaur ulang)
 Daur ulang metal adalah proses pemisahan, pembersihan, dan peleburan besi dan non-besi untuk digunakan kembali sebagai bahan baku produk baru. 
@@ -29,4 +29,4 @@ Beberapa cara untuk recycle metal:
 - Langkah 7: Menjual 
 
 4. Pemurnian
-Pemurnian metal adalah salah satu cara pengolahan metal yang efektif untuk menghasilkan logam murni yang dapat digunakan dalam berbagai aplikasi industri. Metal berharga tersebut bisa dimurnikan dengan cara pembakaran atau pemberian asam dan bahan kimia. Proses pemurnian tersebut disebut daur ulang tradisional dan menghasilkan gas dioksin, timbal, dan gas hidrokarbon pembentuk efek rumah kaca ke udara sebagai polutan[1].
+Pemurnian metal adalah salah satu cara pengolahan metal yang efektif untuk menghasilkan logam murni yang dapat digunakan dalam berbagai aplikasi industri. Metal berharga tersebut bisa dimurnikan dengan cara pembakaran atau pemberian asam dan bahan kimia. Proses pemurnian tersebut disebut daur ulang tradisional dan menghasilkan gas dioksin, timbal, dan gas hidrokarbon pembentuk efek rumah kaca ke udara sebagai polutan.

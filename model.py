@@ -9,8 +9,6 @@ class ResNet50(nn.Module):
         self.freeze()
         self.rnet.fc = nn.Sequential(    
             nn.Linear(2048, output_size),
-            # nn.ReLU(),
-            # nn.Linear(512, output_size),
             nn.LogSoftmax(dim=1)
         )
 

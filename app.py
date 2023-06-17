@@ -1,4 +1,6 @@
 import streamlit as st
+from typing import Dict
+import pandas as pd
 import numpy as np
 import os
 import torch
@@ -8,6 +10,7 @@ from torchvision import transforms
 from model import ResNet50
 from torchvision.transforms.functional import to_pil_image
 import webbrowser
+import base64
 
 
 # Read File
@@ -17,6 +20,13 @@ def get_file_content_as_string(path_1):
     with open(my_file,'r') as f:
         instructions=f.read()
     return instructions
+
+def article_text(path):
+    with open(path, 'r') as file:
+        readme_text = file.read()
+
+    readme_html = f"<div style='text-align: justify'>{readme_text}</div>"
+    st.markdown(readme_html, unsafe_allow_html=True)
 
 # Define the home page
 def home():
@@ -30,7 +40,7 @@ def home():
     #     unsafe_allow_html=True
     # )
 
-    # with open("./image/go-green.png", "rb") as image_file:
+    # with open("./image/tong abu.png", "rb") as image_file:
     #     encoded_string = base64.b64encode(image_file.read()).decode('utf-8')
 
     # st.markdown(f"""
@@ -42,12 +52,16 @@ def home():
     
     # readme_text = st.markdown(get_file_content_as_string('./notepad/Instructions.md'), unsafe_allow_html=True)
 
-    with open('./notepad/Instructions.md', 'r') as file:
-        readme_text = file.read()
+    article_text('notepad/Instructions.md')
 
-    readme_html = f"<div style='text-align: justify'>{readme_text}</div>"
-    readme_markdown = st.markdown(readme_html, unsafe_allow_html=True)
+    tab1, tab2 = st.tabs(["Kategori 1", "Kategori 2"])
 
+    with tab1:
+        st.image('image/3 tempah sampah.jpg', caption='Sumber: https://mmc.kalteng.go.id/berita/read/1868/empat-jenis-tempat-sampah-yang-perlu-diketahui')
+        article_text('notepad/kategori_1.md')
+    with tab2:
+        st.image('image/5 tempat sampah.jpg', caption='Sumber: https://bobo.grid.id/read/08679812/mengenal-warna-tempat-sampah-yuk?page=all')
+        article_text('notepad/kategori_2.md')
 
 device = torch.device('cpu')
 
@@ -121,66 +135,79 @@ def content(category):
         'fruits': {
             'content': './notepad/organik/fruits.md',
             'tipe': 'Organik',
+            'nama': 'Buah',
             'unsafe_allow_html': True
         },
         'meat': {
             'content': './notepad/organik/meat.md',
             'tipe': 'Organik',
+            'nama': 'Daging',
             'unsafe_allow_html': True,
         },
         'paper': {
             'content': './notepad/organik/paper.md',
             'tipe': 'Organik',
+            'nama': 'Kertas',
             'unsafe_allow_html': True,
         },
         'rice': {
             'content': './notepad/organik/rice.md',
             'tipe': 'Organik',
+            'nama': 'Nasi',
             'unsafe_allow_html': True,
         },
         'vegetables': {
             'content': './notepad/organik/vegetables.md',
             'tipe': 'Organik',
+            'nama': 'Sayur',
             'unsafe_allow_html': True,
         },
         'clothes': {
             'content': './notepad/anorganik/clothes.md',
             'tipe': 'Anorganik',
+            'nama': 'Baju',
             'unsafe_allow_html': True,
         },
         'glass': {
             'content': './notepad/anorganik/glass.md',
             'tipe': 'Anorganik',
+            'nama': 'Kaca',
             'unsafe_allow_html': True,
         },
         'metal': {
             'content': './notepad/anorganik/metal.md',
             'tipe': 'Anorganik',
+            'nama': 'Metal',
             'unsafe_allow_html': True,
         },
         'plastic': {
             'content': './notepad/anorganik/plastic.md',
             'tipe': 'Anorganik',
+            'nama': 'Plastik',
             'unsafe_allow_html': True,
         },
         'battery': {
             'content': './notepad/b3/battery.md',
             'tipe': 'B3',
+            'nama': 'Baterai',
             'unsafe_allow_html': True,
         },
         'cigarattes': {
             'content': './notepad/b3/cigarattes.md',
             'tipe': 'B3',
+            'nama': 'Rokok',
             'unsafe_allow_html': True,
         },
         'lamp': {
             'content': './notepad/b3/lamp.md',
             'tipe': 'B3',
+            'nama': 'Lampu',
             'unsafe_allow_html': True,
         },
         'medical waste': {
             'content': './notepad/b3/medical_waste.md',
             'tipe': 'B3',
+            'nama': 'Limbah Medis',
             'unsafe_allow_html': True,
         },
     }
@@ -192,10 +219,14 @@ def content(category):
     #     unsafe_allow_html=True
     # )
     st.markdown(
-        f'<div style="display: flex; margin-top: 23px; justify-content: center;"><span style="background-color: green; color: white; padding: 10px 50px; font-size: 20px;">{category.capitalize()}: {content["tipe"]}</span></div>',
+        f'<div style="display: flex; margin-top: 23px; justify-content: center;"><span style="background-color: green; color: white; padding: 10px 50px; font-size: 20px;">{content["nama"]}: {content["tipe"]}</span></div>',
         unsafe_allow_html=True
-)
-    
+    )
+
+    # st.markdown(
+    #     f'<div style="display: flex; margin-top: 23px; justify-content: center;"><span padding: 10px 50px; font-size: 20px;">{imagez}</span></div>',
+    #     unsafe_allow_html=True
+    # )
     
     # st.success(f'{category}, {content["tipe"]}')
 
@@ -204,17 +235,138 @@ def content(category):
 
     readme_html = f"""<div style='text-align: justify'>{readme_text}</div>"""
     st.markdown(readme_html, unsafe_allow_html=True)
+   
+def content2(category):
+    category_content_maps = {
+        'fruits': {
+            'content': './notepad/organik/fruits.md',
+            'tipe': 'Sampah Organik',
+            'nama': 'Buah',
+            'image': './image/tong hijau.png',
+            'warna': 'Hijau',
+            'unsafe_allow_html': True
+        },
+        'meat': {
+            'content': './notepad/organik/meat.md',
+            'tipe': 'Sampah Organik',
+            'nama': 'Daging',
+            'image': './image/tong hijau.png',
+            'warna': 'Hijau',
+            'unsafe_allow_html': True,
+        },
+        'rice': {
+            'content': './notepad/organik/rice.md',
+            'tipe': 'Sampah Organik',
+            'nama': 'Nasi',
+            'image': './image/tong hijau.png',
+            'warna': 'Hijau',
+            'unsafe_allow_html': True,
+        },
+        'vegetables': {
+            'content': './notepad/organik/vegetables.md',
+            'tipe': 'Sampah Organik',
+            'nama': 'Sayur',
+            'image': './image/tong hijau.png',
+            'warna': 'Hijau',
+            'unsafe_allow_html': True,
+        },
+        'glass': {
+            'content': './notepad/anorganik/glass.md',
+            'tipe': 'Sampah Guna Ulang',
+            'nama': 'Kaca',
+            'image': './image/tong kuning.png',
+            'warna': 'Kuning',
+            'unsafe_allow_html': True,
+        },
+        'metal': {
+            'content': './notepad/anorganik/metal.md',
+            'tipe': 'Sampah Guna Ulang',
+            'nama': 'Metal',
+            'image': './image/tong kuning.png',
+            'warna': 'Kuning',
+            'unsafe_allow_html': True,
+        },
+        'plastic': {
+            'content': './notepad/anorganik/plastic.md',
+            'tipe': 'Sampah Guna Ulang',
+            'nama': 'Plastik',
+            'image': './image/tong kuning.png',
+            'warna': 'Kuning',
+            'unsafe_allow_html': True,
+        },
+        'battery': {
+            'content': './notepad/b3/battery.md',
+            'tipe': 'Sampah B3',
+            'nama': 'Baterai',
+            'image': './image/tong merah.png',
+            'warna': 'Merah',
+            'unsafe_allow_html': True,
+        },
+        'lamp': {
+            'content': './notepad/b3/lamp.md',
+            'tipe': 'Sampah B3',
+            'nama': 'Lampu',
+            'image': './image/tong merah.png',
+            'warna': 'Merah',
+            'unsafe_allow_html': True,
+        },
+        'medical waste': {
+            'content': './notepad/b3/medical_waste.md',
+            'tipe': 'Sampah B3',
+            'nama': 'Limbah Medis',
+            'image': './image/tong merah.png',
+            'warna': 'Merah',
+            'unsafe_allow_html': True,
+        },
+        'paper': {
+            'content': './notepad/organik/paper.md',
+            'tipe': 'Sampah Daur Ulang',
+            'nama': 'Kertas',
+            'image': './image/tong biru.png',
+            'warna': 'Biru',
+            'unsafe_allow_html': True,
+        },
+        'clothes': {
+            'content': './notepad/anorganik/clothes.md',
+            'tipe': 'Sampah Residu',
+            'nama': 'Baju',
+            'image': './image/tong abu.png',
+            'warna': 'Abu-abu',
+            'unsafe_allow_html': True,
+        },
+        'cigarattes': {
+            'content': './notepad/b3/cigarattes.md',
+            'tipe': 'Sampah Residu',
+            'nama': 'Rokok',
+            'image': './image/tong abu.png', 
+            'warna': 'Abu-abu',
+            'unsafe_allow_html': True,
+        },
+    }
 
-# Define page 2
-def page_2():
-    st.write('''# Garbage Classification''')
+    content = category_content_maps[category]
 
-    st.set_option('deprecation.showfileUploaderEncoding', False)
+    col1, col2 = st.columns([2, 1])
+    
+    with col1:
+        st.info(f'Jenis sampah ini dibuang pada tempat sampah warna {content["warna"]}')
 
-    st.markdown('### Choose your preferred method')
-    option = st.radio('### Choose your option', ['Upload a image', 'Take a photo'])
-    st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
+        st.markdown(
+            f'<div style="display: flex; margin-top: 23px; justify-content: center;"><span style="background-color: green; color: white; padding: 10px 50px; font-size: 20px;">{content["nama"]}: {content["tipe"]}</span></div>',
+            unsafe_allow_html=True
+        )
+    with col2:
+        imagez = Image.open(content['image']).convert('RGB')
+        st.image(imagez, width=150)
+    
+    
+    with open(content['content'], 'r') as file:
+        readme_text = file.read()
 
+    readme_html = f"""<div style='text-align: justify'>{readme_text}</div>"""
+    st.markdown(readme_html, unsafe_allow_html=True)
+
+def main_clf(option, content_func):
     if option == 'Upload a image':
         uploaded_file = st.file_uploader('Choose an image')
         category = ''
@@ -229,13 +381,14 @@ def page_2():
                 with col2:
                     st.success('Successfully uploaded the image. Please see the category predictions below')
                     st.warning('To get a classify result, press the Classify buttton!')
-                    st.write('-'*3)
-
+                    st.markdown('#')
                     if st.button('Classify'): 
                         category = predict_image(image)
 
+                st.write('-'*3)
+
                 if len(category) > 0:
-                    content(category)
+                    content_func(category)
                     
             except Exception as e:
                 st.error('Please upload an image in jpg or png format..!')
@@ -247,28 +400,34 @@ def page_2():
         picture = st.camera_input("Take a picture")
 
         if picture:
-           
-        #    category = predict_image(picture)
-        #    st.success(f'Predicted category: {category}')
-        #    content(category)
-           bytes_data = picture.getvalue()
-           torch_img = torch.ops.image.decode_image(
-                torch.from_numpy(np.frombuffer(bytes_data, np.uint8)), 3
-            )
-           pil_image = to_pil_image(torch_img)
-           category = predict_image(pil_image)
-           st.success(f'Predicted category: {category}')
-           content(category)
+            bytes_data = picture.getvalue()
+            torch_img = torch.ops.image.decode_image(
+                    torch.from_numpy(np.frombuffer(bytes_data, np.uint8)), 3
+                )
+            pil_image = to_pil_image(torch_img)
+            category = predict_image(pil_image)
+            st.success(f'Predicted category: {category}')
+            content_func(category)
 
-            # bytes_data = picture.getvalue()
-            # torch_img = torch.ops.image.decode_image(
-            #     torch.from_numpy(np.frombuffer(bytes_data, np.uint8)), 3
-            # )
-            # pil_image = to_pil_image(torch_img)
-            # category = predict_image(pil_image)
-            # st.success(f'Predicted category: {category}')
-            # content(category)
+# Define page 2
+def page_2():
+    st.write('''# Garbage Classification''')
+    st.markdown('### Choose your preferred method')
 
+    st.set_option('deprecation.showfileUploaderEncoding', False)
+
+    st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
+
+    option = st.radio('### Choose your option', ['Upload a image', 'Take a photo'])
+
+    select_box = st.selectbox(
+        'Pick Classification by', ('', 'Kategori 1', 'Kategori 2'))
+
+    if select_box == 'Kategori 1':
+        main_clf(option, content)
+    elif select_box == 'Kategori 2':
+        main_clf(option, content2)
+     
 # Define page 3
 def page_3():
     st.write('''# About''')
@@ -302,11 +461,9 @@ def page_4():
 
 def main():
     with st.sidebar:
-        page = option_menu('Select a page', ['Home', 'Classification', 'About', 'Help'],
-                           default_index=0)
+        page = option_menu('Select a page', ['Home', 'Classification', 'About', 'Help'], default_index=0)
     if page == 'Home':
         home()
- 
     elif page == 'Classification':
         page_2()
     elif page == 'About':
