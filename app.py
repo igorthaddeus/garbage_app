@@ -136,36 +136,48 @@ def content(category):
             'content': './notepad/organik/fruits.md',
             'tipe': 'Organik',
             'nama': 'Buah',
+            'image': './image/tong hijau.png',
+            'warna': 'Hijau',
             'unsafe_allow_html': True
         },
         'meat': {
             'content': './notepad/organik/meat.md',
             'tipe': 'Organik',
             'nama': 'Daging',
+            'image': './image/tong hijau.png',
+            'warna': 'Hijau',
             'unsafe_allow_html': True,
         },
         'paper': {
             'content': './notepad/organik/paper.md',
             'tipe': 'Organik',
             'nama': 'Kertas',
+            'image': './image/tong hijau.png',
+            'warna': 'Hijau',
             'unsafe_allow_html': True,
         },
         'rice': {
             'content': './notepad/organik/rice.md',
             'tipe': 'Organik',
             'nama': 'Nasi',
+            'image': './image/tong hijau.png',
+            'warna': 'Hijau',
             'unsafe_allow_html': True,
         },
         'vegetables': {
             'content': './notepad/organik/vegetables.md',
             'tipe': 'Organik',
             'nama': 'Sayur',
+            'image': './image/tong hijau.png',
+            'warna': 'Hijau',
             'unsafe_allow_html': True,
         },
         'clothes': {
             'content': './notepad/anorganik/clothes.md',
             'tipe': 'Anorganik',
             'nama': 'Baju',
+            'image': './image/tong kuning.png',
+            'warna': 'Kuning',
             'unsafe_allow_html': True,
         },
         'glass': {
@@ -178,36 +190,48 @@ def content(category):
             'content': './notepad/anorganik/metal.md',
             'tipe': 'Anorganik',
             'nama': 'Metal',
+            'image': './image/tong kuning.png',
+            'warna': 'Kuning',
             'unsafe_allow_html': True,
         },
         'plastic': {
             'content': './notepad/anorganik/plastic.md',
             'tipe': 'Anorganik',
             'nama': 'Plastik',
+            'image': './image/tong kuning.png',
+            'warna': 'Kuning',
             'unsafe_allow_html': True,
         },
         'battery': {
             'content': './notepad/b3/battery.md',
             'tipe': 'B3',
             'nama': 'Baterai',
+            'image': './image/tong kuning.png',
+            'warna': 'Kuning',
             'unsafe_allow_html': True,
         },
         'cigarattes': {
             'content': './notepad/b3/cigarattes.md',
             'tipe': 'B3',
             'nama': 'Rokok',
+            'image': './image/tong merah.png',
+            'warna': 'Merah',
             'unsafe_allow_html': True,
         },
         'lamp': {
             'content': './notepad/b3/lamp.md',
             'tipe': 'B3',
             'nama': 'Lampu',
+            'image': './image/tong merah.png',
+            'warna': 'Merah',
             'unsafe_allow_html': True,
         },
         'medical waste': {
             'content': './notepad/b3/medical_waste.md',
             'tipe': 'B3',
             'nama': 'Limbah Medis',
+            'image': './image/tong merah.png',
+            'warna': 'Merah',
             'unsafe_allow_html': True,
         },
     }
@@ -218,10 +242,11 @@ def content(category):
     #     f'<div style="display: flex; margin-top: 23px;justify-content: center;"><span style="background-color: green; color: white; padding: 10px 50px;">{category}: {content["tipe"]}</span></div>',
     #     unsafe_allow_html=True
     # )
-    st.markdown(
-        f'<div style="display: flex; margin-top: 23px; justify-content: center;"><span style="background-color: green; color: white; padding: 10px 50px; font-size: 20px;">{content["nama"]}: {content["tipe"]}</span></div>',
-        unsafe_allow_html=True
-    )
+
+    # st.markdown(
+    #     f'<div style="display: flex; margin-top: 23px; justify-content: center;"><span style="background-color: green; color: white; padding: 10px 50px; font-size: 20px;">{content["nama"]}: {content["tipe"]}</span></div>',
+    #     unsafe_allow_html=True
+    # )
 
     # st.markdown(
     #     f'<div style="display: flex; margin-top: 23px; justify-content: center;"><span padding: 10px 50px; font-size: 20px;">{imagez}</span></div>',
@@ -230,6 +255,26 @@ def content(category):
     
     # st.success(f'{category}, {content["tipe"]}')
 
+    # with open(content['content'], 'r') as file:
+    #     readme_text = file.read()
+
+    # readme_html = f"""<div style='text-align: justify'>{readme_text}</div>"""
+    # st.markdown(readme_html, unsafe_allow_html=True)
+
+    col1, col2 = st.columns([2, 1])
+    
+    with col1:
+        st.info(f'Jenis sampah ini dibuang pada tempat sampah warna {content["warna"]}')
+
+        st.markdown(
+            f'<div style="display: flex; margin-top: 23px; justify-content: center;"><span style="background-color: green; color: white; padding: 10px 50px; font-size: 20px;">{content["nama"]}: {content["tipe"]}</span></div>',
+            unsafe_allow_html=True
+        )
+    with col2:
+        imagez = Image.open(content['image']).convert('RGB')
+        st.image(imagez, width=150)
+    
+    
     with open(content['content'], 'r') as file:
         readme_text = file.read()
 
@@ -411,21 +456,25 @@ def main_clf(option, content_func):
 
 # Define page 2
 def page_2():
+    text = ''
     st.write('''# Garbage Classification''')
-    st.markdown('### Choose your preferred method')
-
+    # st.markdown('### Choose your preferred method')
+    
     st.set_option('deprecation.showfileUploaderEncoding', False)
 
     st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
 
-    option = st.radio('### Choose your option', ['Upload a image', 'Take a photo'])
 
     select_box = st.selectbox(
         'Pick Classification by', ('', 'Kategori 1', 'Kategori 2'))
-
+    
     if select_box == 'Kategori 1':
+        st.success('You selected Kategori 1')
+        option = st.radio('### Choose your option', ['Upload a image', 'Take a photo'])
         main_clf(option, content)
     elif select_box == 'Kategori 2':
+        st.success('You selected Kategori 2')
+        option = st.radio('### Choose your option', ['Upload a image', 'Take a photo'])
         main_clf(option, content2)
      
 # Define page 3
