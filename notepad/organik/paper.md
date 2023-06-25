@@ -1,7 +1,7 @@
 
 
 ## Kertas
-Kertas adalah salah satu limbah yang paling banyak dihasilkan oleh kegiatan manusia. Hingga saat ini, jumlah sampah kertas di Indonesia mencapai 12,02%. Kertas terbuat dari selulosa yang berasal dari kayu, yang mana semakin banyak kebutuhan kertas maka semakin banyak kayu yang dibutuhkan. Hal ini mengakibatkan pohon yang ditebang semakin banyak dan menyebabkan kerusakan lingkungan. Maka dari itu, diperlukan metode daur ulang kertas bekas untuk mengurangi dampak buruk terhadap lingkungan. Kertas merupakan jenis sampah yang terbuat dari bahan dasar kertas dan biasanya dihasilkan dari kayu. Kertas dapat didaur ulang dan diproses menjadi produk baru seperti kertas daur ulang, karton, dan lain sebagainya.[1]
+Kertas adalah salah satu limbah yang paling banyak dihasilkan oleh kegiatan manusia. Hingga saat ini, jumlah sampah kertas di Indonesia mencapai 12,02%. Kertas terbuat dari selulosa yang berasal dari kayu, yang mana semakin banyak kebutuhan kertas maka semakin banyak kayu yang dibutuhkan. Hal ini mengakibatkan pohon yang ditebang semakin banyak dan menyebabkan kerusakan lingkungan. Maka dari itu, diperlukan metode daur ulang kertas bekas untuk mengurangi dampak buruk terhadap lingkungan. Kertas merupakan jenis sampah yang terbuat dari bahan dasar kertas dan biasanya dihasilkan dari kayu. Kertas dapat didaur ulang dan diproses menjadi produk baru seperti kertas daur ulang, karton, dan lain sebagainya.
 
 ### Cara Mengolah
 1. Daur ulang

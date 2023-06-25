@@ -11,7 +11,7 @@ from model import ResNet50
 from torchvision.transforms.functional import to_pil_image
 import webbrowser
 import base64
-
+import io
 
 # Read File
 def get_file_content_as_string(path_1):
@@ -206,8 +206,8 @@ def content(category):
             'content': './notepad/b3/battery.md',
             'tipe': 'B3',
             'nama': 'Baterai',
-            'image': './image/tong kuning.png',
-            'warna': 'Kuning',
+            'image': './image/tong merah.png',
+            'warna': 'Merah',
             'unsafe_allow_html': True,
         },
         'cigarattes': {
@@ -237,42 +237,45 @@ def content(category):
     }
 
     content = category_content_maps[category]
-    # markdown = st.markdown(f"<h2 style='text-align: center; color: black;'>{category}</h2>", unsafe_allow_html=True)
-    # st.markdown(
-    #     f'<div style="display: flex; margin-top: 23px;justify-content: center;"><span style="background-color: green; color: white; padding: 10px 50px;">{category}: {content["tipe"]}</span></div>',
-    #     unsafe_allow_html=True
-    # )
 
-    # st.markdown(
-    #     f'<div style="display: flex; margin-top: 23px; justify-content: center;"><span style="background-color: green; color: white; padding: 10px 50px; font-size: 20px;">{content["nama"]}: {content["tipe"]}</span></div>',
-    #     unsafe_allow_html=True
-    # )
-
-    # st.markdown(
-    #     f'<div style="display: flex; margin-top: 23px; justify-content: center;"><span padding: 10px 50px; font-size: 20px;">{imagez}</span></div>',
-    #     unsafe_allow_html=True
-    # )
-    
-    # st.success(f'{category}, {content["tipe"]}')
-
-    # with open(content['content'], 'r') as file:
-    #     readme_text = file.read()
-
-    # readme_html = f"""<div style='text-align: justify'>{readme_text}</div>"""
-    # st.markdown(readme_html, unsafe_allow_html=True)
-
-    col1, col2 = st.columns([2, 1])
-    
+    col1, col2 = st.columns([1, 2])
+  
     with col1:
+        image = Image.open(content['image']).convert('RGB')
+
+        buffered = io.BytesIO()
+        image.save(buffered, format="PNG")
+        image_data = base64.b64encode(buffered.getvalue()).decode()
+
+        st.markdown(
+            f"""
+            <style>
+            .image-wrapper {{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }}
+            .image-wrapper img {{
+                max-width: 100%;
+                max-height: 100%;
+            }}
+            </style>
+
+            <div class="image-wrapper">
+                <img src="data:image/png;base64,{image_data}" alt="Gambar">
+            </div>
+            """,
+            unsafe_allow_html=True
+        )
+
+    with col2:
+        st.write('')
         st.info(f'Jenis sampah ini dibuang pada tempat sampah warna {content["warna"]}')
 
         st.markdown(
-            f'<div style="display: flex; margin-top: 23px; justify-content: center;"><span style="background-color: green; color: white; padding: 10px 50px; font-size: 20px;">{content["nama"]}: {content["tipe"]}</span></div>',
+            f'<div style="display: flex; margin-top: 10px; margin-bottom: 70px; justify-content: center;"><span style="background-color: green; color: white; padding: 10px 50px; font-size: 20px;">{content["nama"]}: {content["tipe"]}</span></div>',
             unsafe_allow_html=True
         )
-    with col2:
-        imagez = Image.open(content['image']).convert('RGB')
-        st.image(imagez, width=150)
     
     
     with open(content['content'], 'r') as file:
@@ -373,10 +376,10 @@ def content2(category):
         },
         'clothes': {
             'content': './notepad/anorganik/clothes.md',
-            'tipe': 'Sampah Residu',
+            'tipe': 'Sampah Guna Ulang',
             'nama': 'Baju',
-            'image': './image/tong abu.png',
-            'warna': 'Abu-abu',
+            'image': './image/tong kuning.png',
+            'warna': 'Kuning',
             'unsafe_allow_html': True,
         },
         'cigarattes': {
@@ -391,19 +394,44 @@ def content2(category):
 
     content = category_content_maps[category]
 
-    col1, col2 = st.columns([2, 1])
-    
+    col1, col2 = st.columns([1, 2])
+  
     with col1:
+        image = Image.open(content['image']).convert('RGB')
+
+        buffered = io.BytesIO()
+        image.save(buffered, format="PNG")
+        image_data = base64.b64encode(buffered.getvalue()).decode()
+
+        st.markdown(
+            f"""
+            <style>
+            .image-wrapper {{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }}
+            .image-wrapper img {{
+                max-width: 100%;
+                max-height: 100%;
+            }}
+            </style>
+
+            <div class="image-wrapper">
+                <img src="data:image/png;base64,{image_data}" alt="Gambar">
+            </div>
+            """,
+            unsafe_allow_html=True
+        )
+
+    with col2:
+        st.write('')
         st.info(f'Jenis sampah ini dibuang pada tempat sampah warna {content["warna"]}')
 
         st.markdown(
-            f'<div style="display: flex; margin-top: 23px; justify-content: center;"><span style="background-color: green; color: white; padding: 10px 50px; font-size: 20px;">{content["nama"]}: {content["tipe"]}</span></div>',
+            f'<div style="display: flex; margin-top: 10px; margin-bottom: 70px; justify-content: center;"><span style="background-color: green; color: white; padding: 10px 50px; font-size: 20px;">{content["nama"]}: {content["tipe"]}</span></div>',
             unsafe_allow_html=True
         )
-    with col2:
-        imagez = Image.open(content['image']).convert('RGB')
-        st.image(imagez, width=150)
-    
     
     with open(content['content'], 'r') as file:
         readme_text = file.read()
@@ -448,7 +476,7 @@ def main_clf(option, content_func):
             bytes_data = picture.getvalue()
             torch_img = torch.ops.image.decode_image(
                     torch.from_numpy(np.frombuffer(bytes_data, np.uint8)), 3
-                )
+            )
             pil_image = to_pil_image(torch_img)
             category = predict_image(pil_image)
             st.success(f'Predicted category: {category}')
@@ -456,7 +484,6 @@ def main_clf(option, content_func):
 
 # Define page 2
 def page_2():
-    text = ''
     st.write('''# Garbage Classification''')
     # st.markdown('### Choose your preferred method')
     

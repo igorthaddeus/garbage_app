@@ -1,7 +1,7 @@
 
 
 ## Kaca
-Limbah gelas atau kaca yang sudah pecah dapat didaur ulang menjadi barang-barang sama seperti barang semula atau menjadi barang lainseperti 
+Limbah gelas atau kaca yang sudah pecah dapat didaur ulang menjadi barang-barang sama seperti barang semula atau menjadi barang lain seperti 
 botol yang baru, vas bunga, cindera mata, atau hiasan-hiasan lainnya yang mempunyai nilai artistik dan ekonomis
 
 ### Cara Mengolah :     

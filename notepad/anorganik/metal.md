@@ -1,7 +1,7 @@
 
 
 ## Metal
-Sampah atau limbah dari bahan logam seperti besi, kaleng, alumunium, timah, dan lain sebagainya dapat dengan mudah ditemukan di lingkungan sekitar kita. Berbeda dengan barang-barang lainnya, logam lembam di tempat pembuangan sampah dan tidak dapat dibakar. Sampah dari bahan kaleng biasanya yang paling banyak kita temukan dan yang paling mudah kita manfaatkan menjadi barang lain yang bermanfaat. Sampah dari bahan kaleng dapat dijadikan berbagai jenis barang kerajinan yang bermanfaat. Berbagai produk yang dapat dihasilkan dari limbah kaleng di antaranya tempat sampah, vas bunga, gantungan kunci, celengan, gift box, dan lain-lain.
+Sampah atau limbah dari bahan logam seperti besi, kaleng, alumunium, timah, dan lain sebagainya dapat dengan mudah ditemukan di lingkungan sekitar kita. Sampah dari bahan kaleng biasanya yang paling banyak kita temukan dan yang paling mudah kita manfaatkan menjadi barang lain yang bermanfaat. Sampah dari bahan kaleng dapat dijadikan berbagai jenis barang kerajinan yang bermanfaat. Berbagai produk yang dapat dihasilkan dari limbah kaleng di antaranya tempat sampah, vas bunga, gantungan kunci, celengan, gift box, dan lain-lain.
 
 ### Cara Mengolah :
 1. Reuse (Menggunakan kembali)

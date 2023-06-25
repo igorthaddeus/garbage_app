@@ -4,6 +4,7 @@
 Rokok adalah jenis sampah yang berasal dari puntung rokok yang dibuang. Rokok merupakan jenis sampah yang tidak dapat didaur ulang dan perlu pengolahan khusus.
 
 ### Cara Mengolah :
+
 1. Daur ulang 
 Rokok memiliki zat-zat berbahaya yang dapat menyebabkan pencemaran lingkungan. Rokok dapat diolah menjadi produk yang lebih bermanfaat dan memiliki nilai ekonomis. Seperti contoh limbah putung rokok adalah mengolahnya menjadi campuran bahan baku dalam pembuatan batu bata menggantikan brambut yang selama ini digunakan dalam pembuatan batu bata. Batu bata yang dibuat dengan putung rokok lebih menghemat biaya karena biaya yang dikeluarkan untuk membeli brambut diganti dengan limbah putung rokok.
 
