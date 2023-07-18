@@ -32,26 +32,6 @@ def article_text(path):
 def home():
     st.write('''# Garbage Classification''')
 
-    # image = st.image('go-green.png',
-    #                  caption='Source: https://www.kaggle.com/c/cdiscount-image-classification-challenge/overview', width=200)
-    
-    # st.markdown(
-    #     f'<div style="display: flex; justify-content: center;"><img src="data:image/*;base64,{encoded_string}" width="300"/></div>',
-    #     unsafe_allow_html=True
-    # )
-
-    # with open("./image/tong abu.png", "rb") as image_file:
-    #     encoded_string = base64.b64encode(image_file.read()).decode('utf-8')
-
-    # st.markdown(f"""
-    #             <div style="position:relative;">
-    #                 <div style="display: flex; justify-content: center;">
-    #                     <img src="data:image/*;base64,{encoded_string}" width="300"/>
-    #                 </div>
-    #             </div>""", unsafe_allow_html=True)
-    
-    # readme_text = st.markdown(get_file_content_as_string('./notepad/Instructions.md'), unsafe_allow_html=True)
-
     article_text('notepad/Instructions.md')
 
     tab1, tab2 = st.tabs(["Kategori 1", "Kategori 2"])
@@ -67,12 +47,9 @@ device = torch.device('cpu')
 
 def load_model():
     model = ResNet50(13).to(device)
-    # weights = torch.load('model/resnet50-state_dict.pth', map_location=device)
-    # weights = torch.load('model/resnet50_v2.pth', map_location=device)
     weights = torch.load('resnet50_models_fixed.pth', map_location=device)
 
     model.load_state_dict(weights)
-    # model.load_state_dict(weights, weights=ResNet50_Weights.DEFAULT)
     
     model.eval()
     return model 
@@ -83,11 +60,10 @@ label2cat  = ['battery', 'cigarattes', 'clothes', 'fruits',
               'metal', 'paper', 'plastic', 'rice', 'vegetables']
 
 def predict_image(image_path):
-    # image_path = Image.open(image_path)
     transform = transforms.Compose([
-        transforms.Resize((224, 224)),  # Mengubah ukuran gambar menjadi 224x224 piksel
-        transforms.ToTensor(),  # Mengubah gambar menjadi tensor
-        transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])  # Normalisasi tensor
+        transforms.Resize((224, 224)),  
+        transforms.ToTensor(), 
+        transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])  
     ])
     image_tensor = transform(image_path)
     image_tensor = image_tensor.unsqueeze(0).to(device)
@@ -509,25 +485,13 @@ def page_3():
     st.write('''# About''')
     st.text('')
 
-    # with open("./image/yuuki yoda.png", "rb") as image_file:
-    #     encoded_string = base64.b64encode(image_file.read()).decode('utf-8')
-
-    # st.markdown(
-    #     f'<div style="display: flex; justify-content: center;"><img src="data:image/*;base64,{encoded_string}" width="300"/></div>',
-    #     unsafe_allow_html=True
-    # )
- 
     with open('./notepad/about.md', 'r') as file:
         readme_text = file.read()
 
     readme_html = f"<div style='text-align: justify'>{readme_text}</div>"
     readme_markdown = st.markdown(readme_html, unsafe_allow_html=True)
 
-    # readme_text = st.markdown(get_file_content_as_string('./notepad/about.md'), unsafe_allow_html=True)
-
 def page_4():
-    # readme_text = st.markdown(get_file_content_as_string('./notepad/menu_help.md'), unsafe_allow_html=True)
-
     with open('./notepad/menu_help.md', 'r') as file:
         readme_text = file.read()
 
