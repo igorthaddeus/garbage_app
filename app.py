@@ -13,7 +13,6 @@ import webbrowser
 import base64
 import io
 
-# Read File
 def get_file_content_as_string(path_1):
     path = os.path.dirname(__file__)
     my_file = path + path_1
@@ -28,7 +27,6 @@ def article_text(path):
     readme_html = f"<div style='text-align: justify'>{readme_text}</div>"
     st.markdown(readme_html, unsafe_allow_html=True)
 
-# Define the home page
 def home():
     st.write('''# Garbage Classification''')
 
@@ -79,7 +77,6 @@ def predict_image(image_path):
     print(f'Prediction: {prediction}')
     return prediction
 
-# CSS
 st.markdown('''
     <style>
         div.stButton > button:first-child {
@@ -458,7 +455,6 @@ def main_clf(option, content_func):
             st.success(f'Predicted category: {category}')
             content_func(category)
 
-# Define page 2
 def page_2():
     st.write('''# Garbage Classification''')
     # st.markdown('### Choose your preferred method')
@@ -466,7 +462,6 @@ def page_2():
     st.set_option('deprecation.showfileUploaderEncoding', False)
 
     st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
-
 
     select_box = st.selectbox(
         'Pick Classification by', ('', 'Kategori 1', 'Kategori 2'))
@@ -480,7 +475,6 @@ def page_2():
         option = st.radio('### Choose your option', ['Upload a image', 'Take a photo'])
         main_clf(option, content2)
      
-# Define page 3
 def page_3():
     st.write('''# About''')
     st.text('')
